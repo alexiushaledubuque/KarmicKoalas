@@ -96,7 +96,7 @@ class createRoute extends Component {
             style={styles.inputText}
             autoFocus = {true}
             placeholder = "Enter route title"
-            placeholderTextColor='#000000'
+            placeholderTextColor='#CDCDC9'
             // onChangeText={(text) => this.setState({title: text})}
             onSubmitEditing={(event) => {
               this.refs.SecondInput.focus();
@@ -106,7 +106,7 @@ class createRoute extends Component {
             ref='SecondInput'
             style={styles.inputOne}
             placeholder="keywords"
-            placeholderTextColor='#000000'
+            placeholderTextColor='#CDCDC9'
           />
             {Object.keys(this.state.pins[0]).map(id => (
               <MapView.Marker
@@ -137,7 +137,7 @@ class createRoute extends Component {
         <Text>Check</Text>
           </TouchableOpacity>
           <TouchableHighlight style={styles.createRouteBtn} onPress={() => this.createEventView()}>
-            <Text>Create Event</Text>
+            <Text>Create Route</Text>
           </TouchableHighlight>
         </View>
       </View>
@@ -169,14 +169,15 @@ const styles = StyleSheet.create({
   inputOne: {
     height: 40,
     width: width,
+    marginTop: 10,
     backgroundColor: '#fff',
     paddingHorizontal: 18,
     paddingVertical: 12,
-    borderRadius: 20,
-    marginTop: 10
+    borderRadius: 20
   },
   buttonPin: {
-    bottom:10,
+    bottom: 30,
+    right: 120,
     position: 'absolute',
     backgroundColor: '#fff',
     paddingHorizontal: 18,
@@ -184,9 +185,8 @@ const styles = StyleSheet.create({
     borderRadius: 20
   },
   buttonCheck: {
-    flex: 1,
-    bottom:10,
-    left:70,
+    bottom:30,
+    right: 40,
     position: 'absolute',
     backgroundColor: '#fff',
     paddingHorizontal: 18,
@@ -194,14 +194,12 @@ const styles = StyleSheet.create({
     borderRadius: 20
   },
   createRouteBtn: {
-    flex: 1,
-    bottom: 0,
-    left: 150,
+    bottom: 30,
     position: 'absolute',
     backgroundColor: '#fff',
     paddingHorizontal: 10,
-    paddingVertical: 12
-
+    paddingVertical: 12,
+    borderRadius: 20
   }
 });
 
