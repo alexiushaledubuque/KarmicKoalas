@@ -19,38 +19,45 @@ class SignUp extends Component {
   }
 
   signUp(){
-		fetch('/signup', {
-				method: 'POST',
-	  		headers: {
-	    			'Accept': 'application/json',
-	    			'Content-Type': 'application/json',
-	  		},
-	  		body: JSON.stringify({
-					name: this.state.username,
-					email: this.state.email,
-					username: this.state.username,
-					password:  this.state.password
-				})
-			}).then((response) => response.json())
-				.then((responseData) => {
-	    		AlertIOS.alert(
-	        "POST Response",
-	        "Response Body -> " + JSON.stringify(responseData.body)
-	    	  )
-		   })
-		//.done();
+		fetch("https://wegoios.herokuapp.com/signup", {method: "POST", headers: {'Content-Type': 'application/json'} ,body: JSON.stringify({start: startCoord, end: endCoord})})
+     .then((response) => response.json())
+     .then((responseData) => {
+       console.log('DATA FROM SERVER', responseData)
+       this.setState({routeCoordinates: responseData});
+     })
+     .done();
+		console.log('name: '+ this.state.name + '\nemail: '+ this.state.email + '\nusername: '+ this.state.username + '\npassword: '+ this.state.password);
+		this.navToMain()
+		// fetch("http://localhost:8000/signup", {
+		// 		method: 'POST',
+	  // 		headers: {
+	  //   			'Accept': 'application/json',
+	  //   			'Content-Type': 'application/json',
+	  // 		},
+	  // 		body: JSON.stringify({
+		// 			name: this.state.name,
+		// 			email: this.state.email,
+		// 			username: this.state.username,
+		// 			password:  this.state.password,
+		// 		})
+		// 	}).then((response) => response.json())
+		// 		.then((responseData) => {
+		// 			console.log('DATA FROM SERVER', responseData)
+		// 			//update Asynch storage
+		// 	    // AsyncStorage.setItem("userId", "123");
+		// 	    // AsyncStorage.setItem('username',this.state.username)
+		// 			this.navToMain()
+		//    })
+		// .done();
   }
+
     // TODO: Signup logic
     //post request to server /signup response will be userId then store that value
     //.then(
     // AsyncStorage.setItem("userId", userId.toString());
     //)
 
-		//update Asynch storage
-  //   AsyncStorage.setItem("userId", "123");
-  //   AsyncStorage.setItem('username',this.state.username)
-	// 	this.navToMain()
-  // }
+
 
 	navToMain(){
 		this.props.navigator.push({
