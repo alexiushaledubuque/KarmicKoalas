@@ -18,28 +18,28 @@ class SignUp extends Component {
     console.log('name: '+ this.state.name + '\nemail: '+ this.state.email + '\nusername: '+ this.state.username + '\npassword: '+ this.state.password);
   }
 
-  signUp(){
-		fetch('/signup', {
-				method: 'POST',
-	  		headers: {
-	    			'Accept': 'application/json',
-	    			'Content-Type': 'application/json',
-	  		},
-	  		body: JSON.stringify({
-					name: this.state.username,
-					email: this.state.email,
-					username: this.state.username,
-					password:  this.state.password
-				})
-			}).then((response) => response.json())
-				.then((responseData) => {
-	    		AlertIOS.alert(
-	        "POST Response",
-	        "Response Body -> " + JSON.stringify(responseData.body)
-	    	  )
-		   })
-		//.done();
-  }
+  // signUp(){
+	// 	fetch('/signup', {
+	// 			method: 'POST',
+	//   		headers: {
+	//     			'Accept': 'application/json',
+	//     			'Content-Type': 'application/json',
+	//   		},
+	//   		body: JSON.stringify({
+	// 				name: this.state.username,
+	// 				email: this.state.email,
+	// 				username: this.state.username,
+	// 				password:  this.state.password
+	// 			})
+	// 		}).then((response) => response.json())
+	// 			.then((responseData) => {
+	//     		AlertIOS.alert(
+	//         "POST Response",
+	//         "Response Body -> " + JSON.stringify(responseData.body)
+	//     	  )
+	// 	   })
+	// 	//.done();
+  // }
     // TODO: Signup logic
     //post request to server /signup response will be userId then store that value
     //.then(
