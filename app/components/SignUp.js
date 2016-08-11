@@ -19,45 +19,35 @@ class SignUp extends Component {
   }
 
   signUp(){
-		fetch("https://wegoios.herokuapp.com/signup", {method: "POST", headers: {'Content-Type': 'application/json'} ,body: JSON.stringify({start: startCoord, end: endCoord})})
-     .then((response) => response.json())
-     .then((responseData) => {
-       console.log('DATA FROM SERVER', responseData)
-       this.setState({routeCoordinates: responseData});
-     })
-     .done();
 		console.log('name: '+ this.state.name + '\nemail: '+ this.state.email + '\nusername: '+ this.state.username + '\npassword: '+ this.state.password);
-		this.navToMain()
-		// fetch("http://localhost:8000/signup", {
-		// 		method: 'POST',
-	  // 		headers: {
-	  //   			'Accept': 'application/json',
-	  //   			'Content-Type': 'application/json',
-	  // 		},
-	  // 		body: JSON.stringify({
-		// 			name: this.state.name,
-		// 			email: this.state.email,
-		// 			username: this.state.username,
-		// 			password:  this.state.password,
-		// 		})
-		// 	}).then((response) => response.json())
-		// 		.then((responseData) => {
-		// 			console.log('DATA FROM SERVER', responseData)
-		// 			//update Asynch storage
-		// 	    // AsyncStorage.setItem("userId", "123");
-		// 	    // AsyncStorage.setItem('username',this.state.username)
-		// 			this.navToMain()
-		//    })
-		// .done();
+		// if (this.state.name !== null && this.state.email !== null && this.state.username !== null && this state.password){
+		// 	console.log('NOT DATA ENTERED!');
+		// 	return;
+		// }
+
+				fetch("http://localhost:8000/signup", {
+				method: 'POST',
+				headers: {
+						'Accept': 'application/json',
+						'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					name: this.state.name,
+					email: this.state.email,
+					username: this.state.username,
+					password:  this.state.password,
+				})
+			}).then((response) => response.json())
+				.then((responseData) => {
+					console.log('DATA FROM SERVER', responseData)
+					//update Asynch storage
+					var id = '' + responseData.userId;
+					AsyncStorage.setItem("userId", id);
+				//	AsyncStorage.setItem('username',responseData.username)
+					this.navToMain()
+			 })
+			 .done();
   }
-
-    // TODO: Signup logic
-    //post request to server /signup response will be userId then store that value
-    //.then(
-    // AsyncStorage.setItem("userId", userId.toString());
-    //)
-
-
 
 	navToMain(){
 		this.props.navigator.push({
