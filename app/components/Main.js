@@ -142,8 +142,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingHorizontal: 10,
     paddingVertical: 12,
-    bottom: 15,
-    borderRadius: 20
+    borderRadius: 20,
+    bottom: 15
   },
   eventsBtn: {
     flex: 1,
@@ -153,8 +153,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingHorizontal: 10,
     paddingVertical: 12,
-    bottom: 15,
-    borderRadius: 20
+    borderRadius: 20,
+    bottom: 15
   },
   createRouteBtn: {
     flex: 1,
@@ -164,8 +164,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingHorizontal: 10,
     paddingVertical: 12,
-    bottom: 15,
-    borderRadius: 20
+    borderRadius: 20,
+    bottom: 15
   }
 });
 
