@@ -20,7 +20,7 @@ import createEvent from './createEvent';
 //   }
 // ]
 
-let routes2 = [];
+let routes2 = [{"title":"Enter keywords to search for a route","start":"","end":"","points_of_interest":"","id":""}];
 
 class SearchRoutes extends Component {
    constructor(props) {
@@ -41,6 +41,7 @@ class SearchRoutes extends Component {
   }
 
   getRoutes(){
+    console.log('+++++keywords:',{keywords: this.state.search.trim().split(',')})
     // var keysToSearch = this.state.search.trim().split(',');
 		fetch("https://wegotoo.herokuapp.com/searchKeywords", {
     // fetch("https://localhost:8000/searchKeywords", {
@@ -52,11 +53,15 @@ class SearchRoutes extends Component {
 		body: JSON.stringify({
 			keywords: this.state.search.trim().split(',')
 		})
-	}).then((response) => response.json())
-		.then((responseData) => {
-			console.log('DATA FROM SERVER', responseData);
-        for (var i = 0; i < responseData.length; i++){
-          routes2.push(responseData[i]);
+	})//.then((response) => response.json())
+		.then((response) => {
+			console.log('++++++DATA FROM SERVER', response.body);
+        console.log('response[0]',response.body[0])
+        for (var i = 0; i < response.body.length; i++){
+          console.log('response[i]',response.body[i])
+          var a = JSON.parse(response.body[i])
+          console.log('a',a)
+          routes2.push(a);
         }
       console.log("ROUTES 2 ARRAY IS: ", routes2);
 			//update Asynch storage
@@ -132,7 +137,8 @@ const styles = StyleSheet.create({
   routeRow: {
     flex: 1,
     flexDirection: "row",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
+    height: 100
   },
   buttonText: {
     fontSize: 18,

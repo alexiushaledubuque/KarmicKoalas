@@ -44,15 +44,15 @@ app.post('/searchKeywords', (req, res) => {
     return db.knex.raw('SELECT `id` FROM `keywords` WHERE `word` = "' + word + '"')
       .then((result) => {
         var key_id = result[0][0].id
-        //console.log('key_id', key_id)
+        console.log('key_id', key_id)
           //get id for keyword word
         return db.knex.raw('SELECT `route` FROM `keywords_routes` WHERE `key_id` = ' + key_id)
           .then((data) => {
-            //console.log('get routeids from keyword', data[0][0].route)
+            console.log('get routeids from keyword', data[0][0].route)
             routes.push(data[0][0].route)
             //this will be a list of records with route ids from join table with keyword id
             routes.forEach((route_id) => {
-              //console.log('route_id', route_id)
+              console.log('route_id', route_id)
               //console.log(routeIdList.includes(route_id))
               if(routeIdList.includes(route_id) === false){
                    routeIdList.push(route_id)
@@ -60,7 +60,7 @@ app.post('/searchKeywords', (req, res) => {
                    //console.log('routeIdList', routeIdList, count)
                    return db.knex.raw('SELECT `title`,`start`,`end`,`id`,`points_of_interest`  FROM `Routes` WHERE `id` = ' + route_id)
                     .then((routeInfo) => {
-                      //console.log('get route_info', routeInfo[0][0])
+                      console.log('get route_info', routeInfo[0][0])
                       var routeInfo = routeInfo[0][0]
                       var data = {
                         title: routeInfo.title,
@@ -69,9 +69,9 @@ app.post('/searchKeywords', (req, res) => {
                         points_of_interest: routeInfo.points_of_interest,
                         id:routeInfo.id
                       }
-                      //console.log(data)
+                      console.log(data)
                       routesList.push(data);
-                    //  console.log('routesList',routesList)
+                      console.log('routesList',routesList)
                         if (routesList.length === count) {
                            res.status(200).send(routesList)
                         }
