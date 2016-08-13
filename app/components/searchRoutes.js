@@ -58,6 +58,7 @@ class SearchRoutes extends Component {
         for (var i = 0; i < responseData.length; i++){
           routes2.push(responseData[i]);
         }
+      console.log("ROUTES 2 ARRAY IS: ", routes2);
 			//update Asynch storage
 	 }).catch((error) => {
      console.error(error);
