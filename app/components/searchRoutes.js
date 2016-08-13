@@ -3,30 +3,21 @@ import { View, StyleSheet, NavigatorIOS, Text, ListView, TextInput, TouchableHig
 
 import createEvent from './createEvent';
 
-let routes = [
-  {
-    "title": "\"swim in Dallas Park\"",
-    "start": "{\"latitude\":37.33756603,\"longitude\":-122.02681114}",
-    "end": "{\"latitude\":37.34756603,\"longitude\":-122.02581114}",
-    "points_of_interest": null,
-    "id": 177
-  },
-  {
-    "title": "\"swim in Austin Park\"",
-    "start": "{\"latitude\":37.33756603,\"longitude\":-122.02681114}",
-    "end": "{\"latitude\":37.34756603,\"longitude\":-122.02581114}",
-    "points_of_interest": null,
-    "id": 175
-  }
-]
-//   {title: 'New York Historic'},
-//   {title: 'Metropolitan Boston'},
-//   {title: 'Fossil Treck in NJ'},
-//   {title: 'Hudson River Walk'},
-//   {title: 'Central Park NYC'},
-//   {title: 'Bear Mountain Hike Easy'},
-//   {title: 'NYC Midtown Pub Crawl'},
-//   {title: 'Lower East Side NYC Historic'}
+// let routes = [
+//   {
+//     "title": "\"swim in Dallas Park\"",
+//     "start": "{\"latitude\":37.33756603,\"longitude\":-122.02681114}",
+//     "end": "{\"latitude\":37.34756603,\"longitude\":-122.02581114}",
+//     "points_of_interest": null,
+//     "id": 177
+//   },
+//   {
+//     "title": "\"swim in Austin Park\"",
+//     "start": "{\"latitude\":37.33756603,\"longitude\":-122.02681114}",
+//     "end": "{\"latitude\":37.34756603,\"longitude\":-122.02581114}",
+//     "points_of_interest": null,
+//     "id": 175
+//   }
 // ]
 
 let routes2 = [];
@@ -37,7 +28,7 @@ class SearchRoutes extends Component {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       keywords: '',
-      dataSource: ds.cloneWithRows(routes)
+      dataSource: ds.cloneWithRows(routes2)
     };
   }
 
@@ -79,7 +70,7 @@ class SearchRoutes extends Component {
     return (
       <TouchableOpacity style={styles.routeRow} onPress={(event) => this.handleItemClick(rowData)}>
       <View>
-        <Text style={{alignItems: 'center', padding: 3}}>{'\n'}{rowData.title}{'\n'}</Text>
+        <Text style={{alignItems: 'center', padding: 3}}>{'\n'}{rowData.title}{'\n'}{rowData.start}{'\n'}{rowData.end}{'\n'}</Text>
       </View>
       </TouchableOpacity>
     );
