@@ -24,7 +24,7 @@ class myEvents extends Component {
   }
 
   componentDidMount(){
-    fetch("https://wegotoo.herokuapp.com/getMyEvents", {
+    fetch("https://localhost:8000/getMyEvents", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({user_id: this.props.userId})

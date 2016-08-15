@@ -2,7 +2,6 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, NavigatorIOS, Text, AlertIOS, TextInput, TouchableHighlight } from 'react-native';
 
-
 class Event extends Component {
   constructor(props) {
     super(props)

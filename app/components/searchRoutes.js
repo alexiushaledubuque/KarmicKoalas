@@ -41,29 +41,27 @@ class SearchRoutes extends Component {
   }
 
   getRoutes(){
-    console.log('+++++keywords:',{keywords: this.state.search.trim().split(',')})
+    var requestObject = JSON.stringify({"keywords":this.state.search.trim().split(',')})
+    console.log('+++++KEYWORDS BEFORE REQUEST:',requestObject);
     // var keysToSearch = this.state.search.trim().split(',');
-		fetch("https://wegotoo.herokuapp.com/searchKeywords", {
-    // fetch("https://localhost:8000/searchKeywords", {
+	  fetch("http://localhost:8000/searchKeywords", {
 		method: 'POST',
 		headers: {
 				'Accept': 'application/json',
 				'Content-Type': 'application/json',
 		},
-		body: JSON.stringify({
-			keywords: this.state.search.trim().split(',')
-		})
-	})//.then((response) => response.json())
-		.then((response) => {
-			console.log('++++++DATA FROM SERVER', response.body);
-        console.log('response[0]',response.body[0])
-        for (var i = 0; i < response.body.length; i++){
-          console.log('response[i]',response.body[i])
-          var a = JSON.parse(response.body[i])
-          console.log('a',a)
-          routes2.push(a);
-        }
-      console.log("ROUTES 2 ARRAY IS: ", routes2);
+		body: requestObject
+	}).then((response) => { response.json()})
+    .then(responseData => {
+			console.log('++++++RESPONSE DATA FROM SERVER', responseData);
+        // console.log('response[0]',response.body[0])
+        // // for (var i = 0; i < response.body.length; i++){
+        //   console.log('response[i]',response.body[i])
+        //   var a = JSON.parse(response.body[i])
+        //   console.log('a',a)
+        //   routes2.push(a);
+        // }
+      //console.log("ROUTES 2 ARRAY IS: ", routes2);
 			//update Asynch storage
 	 }).catch((error) => {
      console.error(error);
@@ -106,7 +104,7 @@ class SearchRoutes extends Component {
           fontSize={15}
           padding={10}
           value={this.state.search}
-          placeholder="Enter keywords: ex. NYC,Atlanta,City-Of-Love"
+          placeholder="Enter keywords: ex. New York, Atlanta,City Of Brotherly Love"
           onChangeText={(text) => this.setState({search: text})}/>
         <View style={{paddingTop: 2}}>
         <TouchableHighlight onPress={() => this.getRoutes()} style={styles.button}>
@@ -116,7 +114,8 @@ class SearchRoutes extends Component {
             initialListSize={10}
             dataSource={this.state.dataSource}
             renderRow={(route) => { return this.renderRow(route) }}
-            renderSeparator={this.renderSeparator}/>
+            renderSeparator={this.renderSeparator}
+            enableEmptySections={true}/>
           </View>
       </View>
       );
@@ -127,7 +126,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#E0DFDF'
+    backgroundColor: '#DFD6CC'
   },
   navBar: {
     height: 50,

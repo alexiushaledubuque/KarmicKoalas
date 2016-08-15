@@ -69,12 +69,12 @@ app.post('/searchKeywords', (req, res) => {
                         points_of_interest: routeInfo.points_of_interest,
                         id:routeInfo.id
                       }
-                      console.log(data)
+                      console.log('data', data)
                       routesList.push(data);
-                      console.log('routesList',routesList)
-                        if (routesList.length === count) {
-                           res.status(200).send(routesList)
-                        }
+                      console.log('routesList',JSON.stringify(routesList))
+                        //if (routesList.length === count) {
+                           res.status(200).send("foo")
+                        //}
                       })
                }
             })
