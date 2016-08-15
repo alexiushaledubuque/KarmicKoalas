@@ -27,7 +27,7 @@ class SearchRoutes extends Component {
    constructor(props) {
     super(props);
     this.state = {
-      keywords: '',
+      keywords: [],
       dataSource: ds.cloneWithRows([])
     };
   }
@@ -61,9 +61,8 @@ class SearchRoutes extends Component {
 //   this.navToMain(responseData.userId)
 // }).done();
 
-
   getRoutes(){
-    var requestObject = JSON.stringify({"keywords": this.state.search.trim().split(',')})
+    var requestObject = this.state.search.trim().split(',');
     console.log('+++++KEYWORDS BEFORE REQUEST: ',requestObject);
 
 	  fetch("http://localhost:8000/searchKeywords", {
@@ -73,9 +72,8 @@ class SearchRoutes extends Component {
 				'Content-Type': 'application/json',
 		},
 		body: JSON.stringify({
-      "keywords": this.state.search.trim().split(',')
+      keywords: requestObject
     })
-
 	}).then((response) =>response.json()).then((responseData) => {
      console.log('+++++++++++DATA FROM SERVER+++++++: ', responseData)
       this.setState({
