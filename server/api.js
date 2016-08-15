@@ -39,6 +39,8 @@ app.post('/searchKeywords', (req, res) => {
   var count = 0;
   //returns matching routes,[ {id, title, start, end, points_of_interest},...]
   var keywords = req.body.keywords;
+  console.log('keywords',keywords)
+  console.log('json keywords', JSON.parse(keywords))
   //get id for each keyword from keywords db
   keywords.forEach((word) => {
     return db.knex.raw('SELECT `id` FROM `keywords` WHERE `word` = "' + word + '"')
@@ -73,7 +75,7 @@ app.post('/searchKeywords', (req, res) => {
                       routesList.push(data);
                       console.log('routesList',JSON.stringify(routesList))
                         //if (routesList.length === count) {
-                           res.status(200).send("foo")
+                           res.status(200).send(JSON.stringify(routesList))
                         //}
                       })
                }

@@ -20,15 +20,15 @@ import createEvent from './createEvent';
 //   }
 // ]
 
-let routes2 = [{"title":"Enter keywords to search for a route","start":"","end":"","points_of_interest":"","id":""}];
+//let routes = [];
 
+const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 class SearchRoutes extends Component {
    constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       keywords: '',
-      dataSource: ds.cloneWithRows(routes2)
+      dataSource: ds.cloneWithRows([])
     };
   }
 
@@ -40,34 +40,52 @@ class SearchRoutes extends Component {
     });
   }
 
+// fetch("https://wegotoo.herokuapp.com/signup", {
+// method: 'POST',
+// headers: {
+//     'Accept': 'application/json',
+//     'Content-Type': 'application/json',
+// },
+// body: JSON.stringify({
+//   name: this.state.name,
+//   email: this.state.email,
+//   username: this.state.username,
+//   password:  this.state.password,
+// })
+// }).then((response) => response.json()).then((responseData) => {
+//   console.log('DATA FROM SERVER', responseData)
+//   //update Asynch storage
+//   var id = '' + responseData.userId;
+//   AsyncStorage.setItem("userId", id);
+//   AsyncStorage.setItem('username',this.state.username)
+//   this.navToMain(responseData.userId)
+// }).done();
+
+
   getRoutes(){
-    var requestObject = JSON.stringify({"keywords":this.state.search.trim().split(',')})
-    console.log('+++++KEYWORDS BEFORE REQUEST:',requestObject);
-    // var keysToSearch = this.state.search.trim().split(',');
+    var requestObject = JSON.stringify({"keywords": this.state.search.trim().split(',')})
+    console.log('+++++KEYWORDS BEFORE REQUEST: ',requestObject);
+
 	  fetch("http://localhost:8000/searchKeywords", {
 		method: 'POST',
 		headers: {
 				'Accept': 'application/json',
 				'Content-Type': 'application/json',
 		},
-		body: requestObject
-	}).then((response) => { response.json()})
-    .then(responseData => {
-			console.log('++++++RESPONSE DATA FROM SERVER', responseData);
-        // console.log('response[0]',response.body[0])
-        // // for (var i = 0; i < response.body.length; i++){
-        //   console.log('response[i]',response.body[i])
-        //   var a = JSON.parse(response.body[i])
-        //   console.log('a',a)
-        //   routes2.push(a);
-        // }
-      //console.log("ROUTES 2 ARRAY IS: ", routes2);
-			//update Asynch storage
-	 }).catch((error) => {
+		body: JSON.stringify({
+      "keywords": this.state.search.trim().split(',')
+    })
+
+	}).then((response) =>response.json()).then((responseData) => {
+     console.log('+++++++++++DATA FROM SERVER+++++++: ', responseData)
+      this.setState({
+        dataSource: ds.cloneWithRows(responseData)
+      });
+  }).catch((error) => {
      console.error(error);
    })
 	 .done();
-  }
+ }
 
   renderRow(rowData: string, sectionID: number, rowID: number,
     highlightedRow: (sectionID: nunber, rowID: number) => void) {
