@@ -23,7 +23,6 @@ var getAddress = (start, end, cb) => {
    })
 };
 
-
 function getAddressFromLoc(latLongStr, callback){
   var http = require("https");
 
@@ -48,12 +47,11 @@ function getAddressFromLoc(latLongStr, callback){
 
     res.on("end", function () {
       var body = Buffer.concat(chunks);
-      //console.log(body.toString());
       callback(body.toString())
     });
   });
 
   req.end();
-    }
+}
 
   module.exports = getAddress;

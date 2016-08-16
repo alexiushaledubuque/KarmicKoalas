@@ -30,7 +30,7 @@ class SearchRoutes extends Component {
 		body: JSON.stringify({keywords: this.state.search.trim().split(',')})
  	})
   .then((response) => response.json()).then((responseData) => {
-  		console.log('DATA FROM SERVER', responseData);
+  		//console.log('DATA FROM SERVER', responseData);
       this.setState({
         dataSource: ds.cloneWithRows(responseData)
       });
