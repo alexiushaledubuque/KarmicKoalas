@@ -31,7 +31,7 @@ class SearchRoutes extends Component {
 		body: JSON.stringify({keywords: this.state.search.trim().split(',')})
  	})
   .then((response) => response.json()).then((responseData) => {
-  		console.log('DATA FROM SERVER', responseData);
+  		//console.log('DATA FROM SERVER', responseData);
       this.setState({
         dataSource: ds.cloneWithRows(responseData)
       });
@@ -47,7 +47,7 @@ class SearchRoutes extends Component {
       <TouchableOpacity style={styles.routeRow} onPress={(event) => this.handleItemClick(rowData)}>
       <View>
        <Image style={styles.image} source={icon}/>
-       <Text style={{justifyContent: 'flex-start', alignItems: 'flex-start', marginTop: 10}}>{rowData.title}{'\n'}{rowData.start}{'\n'}{rowData.end}</Text>
+       <Text style={{justifyContent: 'flex-start', alignItems: 'flex-start', marginTop: 10}}>{rowData.title}{'\n'}{rowData.start_address}{'\n'}{rowData.end_address}</Text>
       </View>
       </TouchableOpacity>
     );
