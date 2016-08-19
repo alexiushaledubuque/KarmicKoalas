@@ -18,8 +18,17 @@ class SignUp extends Component {
 
   signUp(){
 		console.log('name: '+ this.state.name + '\nemail: '+ this.state.email + '\nusername: '+ this.state.username + '\npassword: '+ this.state.password);
+<<<<<<< HEAD
 
 				fetch("https://wegotoo.herokuapp.com/signup", {
+=======
+		// if (this.state.name !== null && this.state.email !== null && this.state.username !== null && this state.password){
+		// 	console.log('NOT DATA ENTERED!');
+		// 	return;
+		// }
+
+				fetch("http://localhost:8000/signup", {
+>>>>>>> 85d5b3b8f9c9111da4a766cdef2a49355fd54ef3
 				method: 'POST',
 				headers: {
 						'Accept': 'application/json',
@@ -31,14 +40,26 @@ class SignUp extends Component {
 					username: this.state.username,
 					password:  this.state.password,
 				})
+<<<<<<< HEAD
 			}).then((response) => response.json()).then((responseData) => {
+=======
+			}).then((response) => response.json())
+				.then((responseData) => {
+>>>>>>> 85d5b3b8f9c9111da4a766cdef2a49355fd54ef3
 					console.log('DATA FROM SERVER', responseData)
 					//update Asynch storage
 					var id = '' + responseData.userId;
 					AsyncStorage.setItem("userId", id);
+<<<<<<< HEAD
 					AsyncStorage.setItem('username',this.state.username)
 					this.navToMain(responseData.userId)
 			 }).done();
+=======
+				//	AsyncStorage.setItem('username',responseData.username)
+					this.navToMain()
+			 })
+			 .done();
+>>>>>>> 85d5b3b8f9c9111da4a766cdef2a49355fd54ef3
   }
 
 	navToMain(id){
