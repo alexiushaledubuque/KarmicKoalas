@@ -46,7 +46,7 @@ class SignUp extends Component {
 		this.props.navigator.resetTo({
 			navigationBarHidden: true,
 			component: Main,
-			title: "",
+			title: "Main",
 			passProps: {
         username: this.state.username,
 				userId: id
