@@ -35,8 +35,6 @@ class Splash extends Component {
 					navigationBarHidden: true,
 					component: Main,
 					title: "Main",
-					component: About,
-					title: "About",
 					passProps: {
 		        userId: data[1][1],
 						username: data[0][1]
