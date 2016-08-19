@@ -17,7 +17,12 @@ class About extends Component {
       <View style={styles.container}>
 		 	<Image source={Logo} style={styles.image}/>
 				<Text style={styles.textHeader}>
-					The Development Team
+				We Go Too is a social map application. Users create and share routes,
+				create events and share the with friends via GPS and Chat”  Applications
+				include tourism, school field trips, bike rides, shopping together  or a
+				great game of tag.  We bring people together!
+
+				Tech Stack:  React Native, Mysql, Express, Node
 				</Text>
 
 			</View>
