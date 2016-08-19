@@ -124,7 +124,7 @@ class MapComponent extends Component {
         <View style={styles.container}>
           <MapView
             style={styles.map}
-            region={this.props.start}
+            
             showsUserLocation={true}
             followUserLocation={false}
             onRegionChangeComplete={this.onRegionChangeComplete}
