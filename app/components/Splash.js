@@ -1,7 +1,7 @@
 'use strict'
 
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, TouchableHighlight, TextInput, AlertIOS, AsyncStorage } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight, TextInput, Image, AlertIOS, AsyncStorage } from 'react-native';
 import SignUp from './SignUp'
 import Main from './Main'
 import About from './About'
@@ -27,11 +27,8 @@ class Splash extends Component {
       } else {
 				var that = this
 				setTimeout(function() {
-				that.props.navigator.resetTo({
-      }
-			else {
         //existing user
-				this.props.navigator.resetTo({
+				that.props.navigator.resetTo({
 					navigationBarHidden: true,
 					component: Main,
 					title: "Main",
@@ -68,7 +65,7 @@ const styles = StyleSheet.create({
 		image: {
 			height:200,
 			width:230
-		}
+		},
     text: {
       fontSize: 30,
       margin: 80
