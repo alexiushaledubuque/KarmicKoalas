@@ -12,13 +12,12 @@ class About extends Component {
     }
   }
 
-
   render() {
 		return (
       <View style={styles.container}>
 		 	<Image source={Logo} style={styles.image}/>
 				<Text style={styles.textHeader}>
-					WeGoToo
+					The Development Team
 				</Text>
 
 			</View>
