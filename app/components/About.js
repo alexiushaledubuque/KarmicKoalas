@@ -16,13 +16,14 @@ class About extends Component {
 		return (
       <View style={styles.container}>
 		 	<Image source={Logo} style={styles.image}/>
-				<Text style={styles.textHeader}>
-				We Go Too is a social map application. Users create and share routes,
-				create events and share the with friends via GPS and Chat”  Applications
-				include tourism, school field trips, bike rides, shopping together  or a
-				great game of tag.  We bring people together!
+				<Text style={styles.textHeader}></Text>
+				<Text style={styles.description}>
+					We Go Too is a social map app. Users create and share routes,
+					create events and share the with friends via GPS and Chat”  Some applications
+					include tourism, school field trips, bike rides, shopping together or a
+					great game of tag.  We bring people together!
 
-				Tech Stack:  React Native, Mysql, Express, Node
+					Tech Stack:  React Native, Mysql, Express, Node
 				</Text>
 
 			</View>
@@ -47,12 +48,14 @@ const styles = StyleSheet.create({
 			height:30,
 			width:30
 		},
-    inputText: {
-      height: 35,
+    description: {
+			margin: 15,
+      height: 400,
       color: '#3498db',
+			borderWidth: 2,
+			padding: 10,
 			borderColor: "#3498db",
 			fontSize: 15,
-			paddingLeft: 95,
 			borderBottomColor: 'red'
     }
 });
