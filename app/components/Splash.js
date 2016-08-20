@@ -48,7 +48,6 @@ class Splash extends Component {
       <View style={styles.container}>
 		 	<Image source={icon} style={styles.image}/>
 				<Text style={styles.textHeader}>
-					WeGoToo>>>>>
 				</Text>
 			</View>
 			)
